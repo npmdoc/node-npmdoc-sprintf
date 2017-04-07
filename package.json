@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"sprintf",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "sprintf",
+    "description": "api documentation for [sprintf (v0.1.5)](https://github.com/maritz/node-sprintf) [![npm package](https://img.shields.io/npm/v/npmdoc-sprintf.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sprintf) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sprintf.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sprintf)",
     "devDependencies": {
-        "sprintf": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "sprintf": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-sprintf",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-sprintf",
+    "keywords": [
+        "documentation",
+        "sprintf"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_sprintf.js",
+    "name": "npmdoc-sprintf",
+    "nameAlias": "npmdoc_sprintf",
+    "nameOriginal": "npmdoc-sprintf",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-sprintf"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
